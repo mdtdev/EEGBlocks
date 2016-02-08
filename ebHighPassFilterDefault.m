@@ -12,14 +12,14 @@ function eegDataBlob = ebHighPassFilterDefault(eegDataBlob)
 
     a = 0.0078125; % HPF filter coefs (Magic Numbers!)
     b = 0.9921875;
-    
+
     preVal     = zeros(1,14);
     filterData = zeros(size(eegDataBlob.data));
-    
+
     for j = 2:size(eegDataBlob.data, 1)
         preVal = a * eegDataBlob.data(j, :) + b * preVal;
         filterData(j, :) = eegDataBlob.data(j, :) - preVal;
     end
-    
+
     eegDataBlob.data = filterData;
 end
