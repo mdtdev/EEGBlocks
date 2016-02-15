@@ -24,8 +24,8 @@ function eegDataBlob = ebBandPowerCalculator(eegDataBlob, timeLength, overlap, w
 % now. Although, if I am honest, it really does not do that.
 %
 % MDT
-% 2016.02.12
-% Version 0.0.2 alpha
+% 2016.02.14
+% Version 0.1.0 alpha
 
     % Clean up the call and set defaults
 
@@ -65,8 +65,8 @@ function eegDataBlob = ebBandPowerCalculator(eegDataBlob, timeLength, overlap, w
     
     thetaIndex        = find(f >=  4 & f <   8);
     alphaIndex        = find(f >=  8 & f <= 13); % Allen, Coan, & Nazarian 2004
-    betaIndex         = find(f >  13 & f <  25);
-    gammaIndex        = find(f >= 25 & f <  40);
+    betaIndex         = find(f >  13 & f <= 25);
+    gammaIndex        = find(f >  25 & f <= 40);
     totalIndex        = find(f >=  4 & f <= 40);
     
     eegDataBlob.theta         = [];
@@ -100,6 +100,17 @@ function eegDataBlob = ebBandPowerCalculator(eegDataBlob, timeLength, overlap, w
         eegDataBlob.total = [eegDataBlob.total; sum(spectrum(totalIndex, :))];
         eegDataBlob.spectralIndex = [eegDataBlob.spectralIndex; kk];
     end    
+    
+    % Final Bit -- Very Important!
+    %
+    % We add some other variables to make sure the chunk "knows" what the
+    % important parameters were that were used to make the spectral
+    % calculations...
+    
+    eegDataBlob.epochTimeSeconds       = timeLength;
+    eegDataBlob.epochLengthSamples     = dataLength;
+    eegDataBlob.epochOverlapProportion = overlap;
+    eegDataBlob.windowType             = windowType;
 end
 
 % References:

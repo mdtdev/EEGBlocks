@@ -46,10 +46,13 @@ newChunk = ebHighPassFilterDefault(newChunk);
 
 newChunk         % Should look the same a exampleChunk above!
 
-% In the following figure, the limit on the slew rate is the most obvious
+% In the following figure, the limit on the slew rate is the most obvious:
 
 figure;
 plot(exampleChunk.data(:,1), 'b');
 hold on;
 plot(newChunk.data(:,1), 'r');
 legend('Original Data', 'Cleaned Data');
+title('Time Plots of Original and Cleaned Data');
+xlabel('Time (in Samples)');
+ylabel('Amplitude');
