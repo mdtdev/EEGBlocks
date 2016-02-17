@@ -31,9 +31,4 @@ function newThingie = ebAISScore(dataThingie)
         error('ebAISScore: Input data type unrecognized! Stopping.');
     end
     
-    
-    
-    % 
-
-
 end
