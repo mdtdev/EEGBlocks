@@ -1,6 +1,6 @@
 function eegDataBlob = ebThreshold(eegDataBlob, upperLimit, lowerLimit)
 
-% eegDataBlob = ebThreshold(eegDataBlob)
+% eegDataBlob = ebThreshold(eegDataBlob, upperLimit, lowerLimit)
 %
 % Takes an eegDataBlob as input and thresholds the extremes of the
 % amplitudes.  Returns a blob with the revised data.
