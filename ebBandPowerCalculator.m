@@ -84,7 +84,7 @@ function eegDataBlob = ebBandPowerCalculator(eegDataBlob, timeLength, overlap, w
     % of kk will be < dataLength.
     %
     % Defaults are 4 seconds or 512 samples per epoch (for the Emotiv
-    % EPOS/EPOC+), and 25% overlap or a step size of 384 samples. This runs
+    % EPOS/EPOC+), and 25% overlap or a step size of 384 samples.
     
     stepSamples = ceil((1 - overlap)*dataLength);
         
