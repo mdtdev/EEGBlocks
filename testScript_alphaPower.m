@@ -54,18 +54,40 @@ figure;
 plot(FA_right, 'o-b');
 hold on;
 plot(FA_left, '+-r');
-legend('FA_right','FA_left');
+legend('FA-right','FA-left','location','NorthWest');
 title('Frontal Alpha Power over Time');
 xlabel('Time (2 second intervals)');
 ylabel('Alpha Power/Amplitude');
 
 % Alpha power average over entire six minute segment:
 
-FAA_left  = mean(FA_left);
-FAA_right = mean(FA_right);
+FAA_left  = mean(FA_left)    % Frontal Alpha Average
+FAA_right = mean(FA_right)
 
+% Frontal Alpha-Theta Ratio:
 
+FT_left  = (1/4)*sum(chunk.theta(:, 1:4),   2);
+FT_right = (1/4)*sum(chunk.theta(:, 11:14), 2);
 
+FTA_left  = mean(FT_left)    % Frontal Theta Average
+FTA_right = mean(FT_right)
 
+ATR_left  = FA_left  ./ FT_left;
+ATR_right = FA_right ./ FT_right;
 
+figure;
+plot(ATR_right, 'o-b');
+hold on;
+plot(ATR_left, '+-r');
+legend('ATR-right','ATR-left','location','NorthWest');
+title('Frontal Alpha Theta Ratio over Time');
+xlabel('Time (2 second intervals)');
+ylabel('Alpha/Theta Ratio');
 
+MATR_left  = mean(ATR_left)
+MATR_right = mean(ATR_right)
+
+MATR_both  = (MATR_left + MATR_right)/2
+
+% Most of these latter measures (MATR, FTA, FAA) can be used a correlates
+% in the meditation study.
