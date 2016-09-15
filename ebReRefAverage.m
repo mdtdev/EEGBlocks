@@ -4,16 +4,7 @@ function eegDataBlob = ebReRefAverage(eegDataBlob, modeString)
 %
 % Function to re-reference EEG to the global EEG "average reference" using
 % original code for this purpose, due to problems with eeglab. This is just
-% the usual "average" or "AVG/AVE" reference in the literature, but NOT to
-% be confused with the so-called "**common** average reference" of:
-%
-% Lepage, Kyle Q., Mark A. Kramer, and Catherine J. Chu. 2014. “A
-% Statistically Robust EEG Re-Referencing Procedure to Mitigate Reference
-% Effect.” Journal of Neuroscience Methods 235 (September): 101–16.
-% doi:10.1016/j.jneumeth.2014.05.008. 
-%
-% that we also use in some of our work. This confusion of terminology
-% appears in the literature!
+% the usual "average" or "AVG/AVE" reference in the literature.
 %
 % Please note that by DEFAULT this function is non-destructive, but can be
 % run in "destructive mode" to reduce blob size or allow later functions in
@@ -29,11 +20,11 @@ function eegDataBlob = ebReRefAverage(eegDataBlob, modeString)
 % Version 0.1.0 alpha
 
     if nargin < 2
-        modeString = 'nondestructive';  
+        modeString = 'nondestructive';
     end
-    
+
     aveRefData = internalNaiveAverageReference(eegDataBlob.data);
-    
+
     if strcmp(modeString, 'nondestructive')
         eegDataBlob.dataAveRef = aveRefData;
     elseif strcmp(modeString, 'destructive')
