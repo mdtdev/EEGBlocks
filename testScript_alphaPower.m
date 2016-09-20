@@ -6,7 +6,7 @@
 % MDT
 % 2016.03.27
 
-% RUN eeglab FIRST for directory set up for programs
+% RUN eeglab FIRST for directory/path set up for programs
 
 eeglab;
 close all;
