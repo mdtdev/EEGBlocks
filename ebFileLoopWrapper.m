@@ -2,7 +2,9 @@ function ebFileLoopWrapper(filePattern, f)
 % ebFileLoopWrapper(filePattern, functionHandle)
 %
 % Function to take a filename pattern and apply a function to each one in
-% sequence.
+% sequence. A function handle is the name of the function with the '@' sign
+% added to the front, a la @ge_importScript2 as the handle for ge_importScript2,
+% etc...
 %
 % PROTOTYPE!
 %
@@ -13,7 +15,7 @@ function ebFileLoopWrapper(filePattern, f)
     % Use the pattern to get a list of relevant files
 
     fileList = dir(filePattern);
-    
+
     if isempty(fileList)
         error('ebFileLoopWrapper: Your file name pattern produces no results. WTF?');
     end
